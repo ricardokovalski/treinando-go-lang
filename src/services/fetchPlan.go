@@ -33,3 +33,12 @@ func EncodePlan(plan entities.Plan) (string, error) {
 	}
 	return string(json), nil
 }
+
+func DecodePlan(stringJson string) (interface{}, error) {
+	plan := entities.Plan{}
+	err := json.Unmarshal([]byte(stringJson), &plan)
+	if err != nil {
+		return nil, err
+	}
+	return plan, nil
+}

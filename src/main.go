@@ -11,7 +11,10 @@ func main() {
 	plan := services.FetchPlan()
 	// encodando o plano retornando
 	json, _ := services.EncodePlan(plan)
+	// decodificando o json em uma estruct de Plan
+	planDecode, _ := services.DecodePlan(json)
 
 	fmt.Println(plan)
 	fmt.Println(json)
+	fmt.Println(planDecode)
 }
