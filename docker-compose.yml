@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  go-dev:
+    build:
+      dockerfile: ./docker/dev/Dockerfile
+      context: .
+    working_dir: /go/src/
+    ports:
+      - 2346:2345
+    volumes:
+      - './:/go/src/'
+    env_file: '.env'
+    command:
+      - ./src/main.go
