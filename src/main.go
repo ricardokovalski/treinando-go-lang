@@ -17,4 +17,8 @@ func main() {
 	fmt.Println(plan)
 	fmt.Println(json)
 	fmt.Println(planDecode)
+
+	// obtendo vários planos
+	plans := services.FetchPlans()
+	fmt.Println(plans)
 }
