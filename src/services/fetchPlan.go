@@ -26,14 +26,6 @@ func FetchPlan() entities.Plan {
 	return plan
 }
 
-func EncodePlan(plan entities.Plan) (string, error) {
-	json, err := json.Marshal(plan)
-	if err != nil {
-		return "", err
-	}
-	return string(json), nil
-}
-
 func DecodePlan(stringJson string) (interface{}, error) {
 	plan := entities.Plan{}
 	err := json.Unmarshal([]byte(stringJson), &plan)

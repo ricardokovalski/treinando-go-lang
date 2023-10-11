@@ -5,13 +5,14 @@ import (
 
 	"github.com/ricardokovalski/treinando-go-lang/src/entities"
 	"github.com/ricardokovalski/treinando-go-lang/src/services"
+	"github.com/ricardokovalski/treinando-go-lang/src/utils"
 )
 
 func main() {
 	// obtendo um plano mockado
 	plan := services.FetchPlan()
 	// encodando o plano retornando
-	json, _ := services.EncodePlan(plan)
+	json, _ := utils.Encode(plan)
 	// decodificando o json em uma estruct de Plan
 	planDecode, _ := services.DecodePlan(json)
 
@@ -42,4 +43,6 @@ func main() {
 	plans = services.AppendPlan(plans, newPlan1)
 	fmt.Printf("%+v\n", plans)
 
+	jsonCollection, _ := utils.Encode(plans)
+	fmt.Println(jsonCollection)
 }
