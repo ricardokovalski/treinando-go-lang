@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/ricardokovalski/treinando-go-lang/src/entities"
 	"github.com/ricardokovalski/treinando-go-lang/src/services"
 )
 
@@ -20,5 +21,25 @@ func main() {
 
 	// obtendo vários planos
 	plans := services.FetchPlans()
-	fmt.Println(plans)
+	fmt.Printf("%+v\n", plans)
+
+	newPlan1 := entities.Plan{
+		Identifier: "plan_analytical_2023",
+		Price:      400.98,
+		Range:      7,
+		Limits: []entities.Limit{
+			{
+				Key:   "dfes",
+				Value: 400,
+			},
+			{
+				Key:   "coupons",
+				Value: 4000,
+			},
+		},
+	}
+
+	plans = services.AppendPlan(plans, newPlan1)
+	fmt.Printf("%+v\n", plans)
+
 }
