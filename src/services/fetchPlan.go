@@ -1,8 +1,6 @@
 package services
 
 import (
-	"encoding/json"
-
 	"github.com/ricardokovalski/treinando-go-lang/src/entities"
 )
 
@@ -24,13 +22,4 @@ func FetchPlan() entities.Plan {
 	}
 
 	return plan
-}
-
-func DecodePlan(stringJson string) (interface{}, error) {
-	plan := entities.Plan{}
-	err := json.Unmarshal([]byte(stringJson), &plan)
-	if err != nil {
-		return nil, err
-	}
-	return plan, nil
 }

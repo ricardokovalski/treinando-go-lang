@@ -10,17 +10,18 @@ import (
 
 func main() {
 	// obtendo um plano mockado
-	plan := services.FetchPlan()
+	//plan := services.FetchPlan()
 	// encodando o plano retornando
-	json, _ := utils.Encode(plan)
+	//json, _ := utils.Encode(plan)
 	// decodificando o json em uma estruct de Plan
-	planDecode, _ := services.DecodePlan(json)
+	//planDecode, _ := services.DecodePlan(json)
 
-	fmt.Println(plan)
-	fmt.Println(json)
-	fmt.Println(planDecode)
+	// fmt.Println(plan)
+	// fmt.Println(json)
+	// fmt.Println(planDecode)
 
 	// obtendo vários planos
+	fmt.Println("Obtendo todos os planos")
 	plans := services.FetchPlans()
 	fmt.Printf("%+v\n", plans)
 
@@ -40,9 +41,16 @@ func main() {
 		},
 	}
 
+	fmt.Println("Add novo plano")
 	plans = services.AppendPlan(plans, newPlan1)
-	fmt.Printf("%+v\n", plans)
 
+	fmt.Println("Encodar a lista de planos")
 	jsonCollection, _ := utils.Encode(plans)
 	fmt.Println(jsonCollection)
+
+	fmt.Println("Decodando a lista de planos")
+	var jsonNew = []entities.Plan{}
+	utils.Decode(&jsonNew, jsonCollection)
+	//fmt.Printf("%+v\n", test)
+	fmt.Println(jsonNew)
 }

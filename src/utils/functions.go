@@ -11,3 +11,11 @@ func Encode(object any) (string, error) {
 	}
 	return string(json), nil
 }
+
+func Decode(object any, msg string) error {
+	err := json.Unmarshal([]byte(msg), &object)
+	if err != nil {
+		return err
+	}
+	return nil
+}
